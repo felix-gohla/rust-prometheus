@@ -310,10 +310,10 @@ use self::coarse::*;
 mod coarse {
     use crate::histogram::Timespec;
     pub use libc::timespec;
-    use libc::{clock_gettime, CLOCK_MONOTONIC_COARSE};
+    use libc::{clock_gettime, CLOCK_MONOTONIC_COARSE, time_t, c_long};
 
-    pub const NANOS_PER_MILLI: i64 = 1_000_000;
-    pub const MILLIS_PER_SEC: i64 = 1_000;
+    pub const NANOS_PER_MILLI: c_long = 1_000_000;
+    pub const MILLIS_PER_SEC: time_t = 1_000;
 
     pub fn get_time_coarse() -> Timespec {
         let mut t = Timespec(timespec {
